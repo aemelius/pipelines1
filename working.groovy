@@ -41,9 +41,9 @@ spec:
 	       	      withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'kubedeployer1', usernameVariable: 'AWS_ACCESS_KEY_ID', passwordVariable: 'AWS_SECRET_ACCESS_KEY']]) {
 	       	          withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'db', usernameVariable: 'DB_USER', passwordVariable: 'DB_PASSWORD']]) {
 
-                        sh "sed -i "s|@@@IMAGE@@@|${image}|g" ./kube/deployment.yaml"
-                        sh "sed -i "s|@@@DB_USER@@@|${DB_USER}|g" ./kube/deployment.yaml"
-                        sh "sed -i "s|@@@DB_PASSWORD@@@|${DB_PASSWORD}|g" ./kube/deployment.yaml"
+                        sh """sed -i "s|@@@IMAGE@@@|${image}|g" ./kube/deployment.yaml"""
+                        sh """sed -i "s|@@@DB_USER@@@|${DB_USER}|g" ./kube/deployment.yaml"""
+                        sh """sed -i "s|@@@DB_PASSWORD@@@|${DB_PASSWORD}|g" ./kube/deployment.yaml"""
 
 			                  sh "aws configure set aws_access_key_id ${AWS_ACCESS_KEY_ID}"
 			                  sh "aws configure set aws_secret_access_key ${AWS_SECRET_ACCESS_KEY}"
