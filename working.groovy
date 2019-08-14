@@ -48,7 +48,9 @@ spec:
 			                  sh "aws configure set aws_access_key_id ${AWS_ACCESS_KEY_ID}"
 			                  sh "aws configure set aws_secret_access_key ${AWS_SECRET_ACCESS_KEY}"
 			                  sh "aws eks update-kubeconfig --name=sb1 --region=eu-west-2"
-			                  sh "kubectl get namespaces"
+                        sh "kubectl apply -f ./kube/deployment.yaml"
+                        sh "kubectl apply -f ./kube/service.yaml"
+                        sh "kubectl apply -f ./kube/ingress.yaml"
                     }
                 }
 			      }
